@@ -1,0 +1,1 @@
+printjson(db.people.find({birth_date: {$gte: new ISODate("2001-01-01")}}).toArray())
