@@ -1,0 +1,108 @@
+
+1. curl -XPUT "http://localhost:8098/buckets/s22952/keys/FlyingV" -H "Content-Type: application/json" -d '{"model": "Gibson Flying V", "made": "USA", "price": 7346.99, "in_stock": disable}' -i
+curl -XPUT "http://localhost:8098/buckets/s22952/keys/SG" -H "Content-Type: application/json" -d '{"model": "Gibson SG", "made": "USA", "price": 4699.99, "in_stock": enable}' -i
+curl -XPUT "http://localhost:8098/buckets/s22952/keys/LesPaul" -H "Content-Type: application/json" -d '{"model": "Gibson Les Paul", "made": "USA", "price": 10000.00, "in_stock": enable}' -i
+curl -XPUT "http://localhost:8098/buckets/s22952/keys/Explorer" -H "Content-Type: application/json" -d '{"model": "Gibson Explorer", "made": "USA", "price": 4999.99, "in_stock": disable}' -i
+curl -XPUT "http://localhost:8098/buckets/s22952/keys/ES335" -H "Content-Type: application/json" -d '{"model": "Gibson ES 335", "made": "USA", "price": 21999.99, "in_stock": disable}' -i
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:14:04 GMT
+Content-Type: application/json
+Content-Length: 0
+
+2. curl "http://localhost:8098/buckets/s22952/keys/Explorer" -i
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/fm689FIPIpTImMfKkJFie4svCwA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s22952>; rel="up"
+Last-Modified: Tue, 15 Jun 2021 17:50:32 GMT
+ETag: "6asLkscDAk9dh8UuaJVqcf"
+Date: Tue, 15 Jun 2021 18:07:51 GMT
+Content-Type: application/json
+Content-Length: 82
+
+
+3. curl -XPUT "http://localhost:8098/buckets/s22952/keys/ES335" -H "Content-Type: application/json" -d '{"model": "Gibson ES 335", "prod_year": 1988,  "made": "USA", "price": 21999.99, "in_stock": disable}' -i
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:09:15 GMT
+Content-Type: application/json
+Content-Length: 0
+
+4. curl -XPUT "http://localhost:8098/buckets/s22952/keys/ES335" -H "Content-Type: application/json" -d '{"model": "Gibson ES 335", "made": "USA", "price": 21999.99}' -i
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:10:31 GMT
+Content-Type: application/json
+Content-Length: 0
+
+5. curl -XPUT "http://localhost:8098/buckets/s22952/keys/SG" -H "Content-Type: application/json" -d '{"model": "Gibson SG", "made": "USA", "price": 6699.99, "in_stock": enable}' -i
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:11:35 GMT
+Content-Type: application/json
+Content-Length: 0
+
+6. curl -XDELETE "http://localhost:8098/buckets/s22952/keys/LesPaul" -i
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:12:01 GMT
+Content-Type: application/json
+Content-Length: 0
+
+7. curl -XGET "http://localhost:8098/buckets/s22952/keys/LesPaul" -i
+
+HTTP/1.1 404 Object Not Found
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:12:17 GMT
+Content-Type: text/plain
+Content-Length: 10
+
+not found
+
+8. curl -XPOST "http://localhost:8098/buckets/s22952/keys" -H "Content-Type: application/json" -d '{"model": "Fender"}' -i
+
+HTTP/1.1 201 Created
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Location: /buckets/s22952/keys/XNPeXr9TpfJmjldTQ04yiLTVoGU
+Date: Tue, 15 Jun 2021 18:12:35 GMT
+Content-Type: application/json
+Content-Length: 0
+
+9. curl -XGET "http://localhost:8098/buckets/s22952/keys/XNPeXr9TpfJmjldTQ04yiLTVoGU" -i
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/fm7ccTEJIpTImMfKMDnT9hZfFgA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s22952>; rel="up"
+Last-Modified: Tue, 15 Jun 2021 18:12:35 GMT
+ETag: "2Xwrh9yoeVAmPlJxZI1CDb"
+Date: Tue, 15 Jun 2021 18:13:14 GMT
+Content-Type: application/json
+Content-Length: 19
+
+{"model": "Fender"}%   
+
+10. curl -XDELETE "http://localhost:8098/buckets/s22952/keys/9flcbHRHja8Co0BIlc1hGd8nIok" -i
+
+HTTP/1.1 404 Object Not Found
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Tue, 15 Jun 2021 18:13:29 GMT
+Content-Type: text/plain
+Content-Length: 10
+
+not found
