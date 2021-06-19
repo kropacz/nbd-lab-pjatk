@@ -1,0 +1,13 @@
+Creating new object...
+
+Fetching new object...
+b'{"model": "Ibanez RGR", "price": 2499.99, "prod_year": 2020}'
+
+Updateing new object:
+
+After update:
+b'{"model": "Ibanez RGR", "price": 2499.99, "prod_year": 2021}'
+
+Deleting new object:
+After delete:
+None
